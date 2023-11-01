@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;700&display=swap');
+
+
+body,html{
+ background:url('fondo.png');
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+    font-family: 'ubuntu', sans-serif;
+    background-color: #F1ECE7;
+    vertical-align: baseline;
+}
+
+header{
+
+    font-size: 60px;
+    font-weight: bold; 
+    text-align: center;
+    background-color: #276E90;
+    color: #ffff;
+    align-items: center;
+    position:sticky;
+    height: 75px;
+    width:auto;
+}
+
+.container{
+    margin:150px auto;
+    border-color: transparent;
+}
+
+table{
+    align-items: center;
+    color: #114358;
+    font-size: 40px;
+    text-align:center;
+
+}
+
+th{
+    align-items: center;
+    padding: 70px;
+    border: 1px black;
+}
+
+.le{
+    height: 100px;
+}
+
+.inst{
+    color: white;
+    font-size: 15px;
+    text-align: center;
+}
+
+
+form{
+    margin: 0 auto ;
+
+    background-color: #276E90;
+    border-radius: 20px;
+    display: flex; /*los cuadros se colocan como tablas*/
+    align-items: center; /*controlar la alineacion*/
+    justify-content: center; /*distribuir espacio*/
+    width: 300px;
+    font-family: 'poppins';
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    padding: 10px; 
+}
+
+.ini{
+    font-size: 30px;
+    color: #F1ECE7;
+    font-weight: bold; 
+}
+
+input, textarea{
+    border: 0;
+    outline:none; /*para el estilo del contorno*/
+    padding: 18px 15px;
+    margin: 15px 0;
+    background: #F1ECE7;
+    border-radius: 5px;
+    border-color: transparent;
+}
+
+input::placeholder{
+    font-family: 'poppins';
+    color: #090909;
+    font-size: 15px;
+    text-align: center; /*alinear texto*/
+    letter-spacing: 1pt;
+}
+
+.field{
+    width: 280px;
+}
+
+.field:hover{
+    border: solid 1px #090909;
+    cursor: pointer; /*manita sobre los enlaces*/
+
+}
+
+.field:focus{
+    border-color: #ffffffc9; 
+}
+
+.boton{
+    width: 95px;
+    height: 33px;
+    font-size: 18px;
+    background-color: #F2AA1F;
+    border-radius: 6px;
+    border-color: transparent;
+    font-weight: bold;
+    color: white;
+    border: 0;
+    cursor: pointer;
+}
+
+.boton:hover{
+    border: solid 3px white;
+    cursor: pointer; /*manita sobre los enlaces*/
+
+}
