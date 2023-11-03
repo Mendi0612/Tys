@@ -1,4 +1,3 @@
-
 var vp = document.getElementById("villa");
 var papel =vp.getContext("2d");
 var tecla=0;
@@ -48,8 +47,8 @@ calabera.src="imagenes/calabera.png";
 var minotauro =new Image();
 minotauro.src="imagenes/minotauro.png";
 
-/*var vampira =new Image();
-vampira.src="imagenes/vampira.png";*/
+var moneda=new Image();
+moneda.src="imagenes/moneda.png";
 
 var over  = new Image;
 over.src="imagenes/over.png";
@@ -62,6 +61,31 @@ bandera.src="imagenes/Bandera.png";
 
 var corazon=new Image;
 corazon.src="imagenes/corazon.png";
+
+var a=new Image;
+a.src="imagenes/A.png";
+
+var d=new Image;
+d.src="imagenes/D.png";
+
+var s=new Image;
+s.src="imagenes/S.png";
+
+var w=new Image;
+w.src="imagenes/W.png";
+
+var fArriba=new Image;
+fArriba.src="imagenes/flecha-arriba.png";
+
+var fAbajo=new Image;
+fAbajo.src="imagenes/flecha-abajo.png";
+
+var fIzquierda=new Image;
+fIzquierda.src="imagenes/tecla-izquierda.png";
+
+var fDerecha=new Image;
+fDerecha.src="imagenes/tecla-derecha.png";
+
 
 personaje.objeto = new Image();
 personaje.objeto.src=personaje.url;
@@ -197,7 +221,7 @@ return Math.floor(Math.random() * (6 - 1 + 1) + 1);
 }
 
 function valor(){
-  reto=5;
+  reto=random();
   switch(reto){
     case 1:
       teclas.UP,
@@ -280,10 +304,27 @@ function dibujarReglas(){
 }
 function dTecla(T){
   if(T==39){
-    return "->";
+    return papel.drawImage(fDerecha,510,60,50,50);
   }
   else if(T==37){
-    return"<-";
+    return papel.drawImage(fIzquierda,520,60,50,50);
+  }
+  else if(T==38){
+    return papel.drawImage(fArriba,500,60,50,50);
+  }
+  else if(T==40){
+    return papel.drawImage(fAbajo,490,60,50,50);
+  }
+  else if(T==65){
+    return papel.drawImage(a,520,60,50,50);
+  } else if(T==83){
+    return papel.drawImage(s,490,60,50,50);
+  }
+  else if(T==68){
+    return papel.drawImage(d,510,60,50,50);
+  }
+  else if(T==87){
+    return papel.drawImage(w,500,60,50,50);
   }
 }
 
