@@ -21,11 +21,16 @@ function dibujarlogo(){
 }
 
 function comenzar(){ 
-    mostrar()
-    setTimeout(()=>{inicio=true,
-    nexLevel.disabled=true,
-    nexLevel.innerHTML=`sigiente nivel`
-},5000);
+    if(inicio==false){
+        mostrar()
+        nexLevel.disabled=true
+        setTimeout(()=>{inicio=true,
+            nexLevel.innerHTML=`sigiente nivel`
+        },5000);
+    }
+    else{
+        window.location.href="consentracion2.html";
+    }
 }
     
 
@@ -83,7 +88,7 @@ if(inicio){
         document.getElementById("aciertos").innerHTML=`numero de aciertos: ${acierto}`;
         if(acierto==8){
             clearInterval(tiempo);
-            
+            nexLevel.disabled=false;
         }
         }
         else{
