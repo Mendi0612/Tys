@@ -1,0 +1,9 @@
+body{
+    background-color: rgb(0, 0, 0);
+    color: lightblue;
+    display: flex;
+    
+  }
+.villa{
+    border-radius: 30px;
+}

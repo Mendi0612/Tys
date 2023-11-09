@@ -13,6 +13,8 @@ var vidas=3;
 var ganaste=0;
 var fin =true;
 var fint=true
+let reinicio=0;
+let boton;
 var imagen ={
   url: "imagenes/map.png",
   cargaOk: false
@@ -85,11 +87,12 @@ fIzquierda.src="imagenes/tecla-izquierda.png";
 
 var fDerecha=new Image;
 fDerecha.src="imagenes/tecla-derecha.png";
+boton=document.getElementById("reiniciar");
 
 
 personaje.objeto = new Image();
 personaje.objeto.src=personaje.url;
-personaje.objeto.addEventListener("load", tutorial());
+personaje.objeto.addEventListener("load", dibujarjuego());
 
 function cargarFondo(){
   imagen.cargaOk= true;
@@ -188,7 +191,8 @@ function vida(){
   }
   if(vidas==0){
     papel.drawImage(over,0,0,800,800),
-    fin=false;
+    fin=false,
+    boton.disabled=false;
   }
 }
 function colicion(x,y){
@@ -205,7 +209,10 @@ function ganar(x,y){
   papel.drawImage(bandera,x2,y2,48,48);
   if((x2<(personajeX+ancho1))&((x2+anchoBandera)>personajeX))
     if(((y2+altoBandera)>personajeY)&(y2<(personajeY+alto1)))
-      fin=false,papel.drawImage(win,0,0,800,800);
+      fin=false,
+      papel.drawImage(win,0,0,800,800),
+      boton.disabled=false,
+      boton.innerHTML="nex level";
 }
 
 function ganart(x,y){  
@@ -333,6 +340,7 @@ function tutorial(){
   cargarFondo();
   if(val){
     valor();
+    boton.disabled=true;
     val=false;
   }
   papel.drawImage(personaje.objeto,indiceX*48,indiceY*48,48,48,personajeX,personajeY,48,48);
@@ -351,6 +359,7 @@ function tutorial(){
 
 function dibujarjuego(){
   personaje.cargaOk=true;
+  boton.disabled=true;
   cargarFondo();
 
   papel.drawImage(personaje.objeto,indiceX*48,indiceY*48,48,48,personajeX,personajeY,48,48);
@@ -367,8 +376,22 @@ function dibujarjuego(){
   if(vidas!=0)
   ganar(700,700);
 }
-  if(fin==true){
+  if(fin){
   setTimeout("dibujarjuego();",100);
   }
 
+}
+
+function reiniciar(){
+  if(vidas==0){
+  reinicio++;
+  vidas=3;
+  personajeX=380;
+  personajeY=410;
+  fin=true;
+  dibujarjuego();
+  }
+  else{
+    window.location.href="file:///C:/Users/ACER/Desktop/tys/level%202/consentracion.html"
+  }
 }
