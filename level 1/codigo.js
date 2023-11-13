@@ -15,6 +15,7 @@ var fin =true;
 var fint=true
 let reinicio=0;
 let boton;
+let monedas=0;
 var imagen ={
   url: "imagenes/map.png",
   cargaOk: false
@@ -139,19 +140,7 @@ function limites(){
       personajeY=270;
 }
 
-function obstaculos(CX,CY,enemigo){
-  if(imagen.cargaOk)
-  {
-    if(CX>700)
-    CX=700
-    else if (CY>700)
-    CY=700;
-
-    papel.drawImage(enemigo,indice_enemigoX*47,indice_enemigoY*47,48,48,CX,CY,48,48);
-
-    colicion((CX),(CY));
-    }
-}  
+ 
 
 function dibujarobstaculos(){
     obstaculos(50,50,minotauro);
@@ -180,11 +169,34 @@ function dibujarobstaculos(){
     obstaculos(690,310,ninja);
     obstaculos(470,680,calabera);
 
+
+    function obstaculos(CX,CY,enemigo){
+      if(imagen.cargaOk)
+      {
+        if(CX>700)
+        CX=700
+        else if (CY>700)
+        CY=700;
+    
+        papel.drawImage(enemigo,indice_enemigoX*47,indice_enemigoY*47,48,48,CX,CY,48,48);
+    
+        colicion(CX,CY);
+        }
+    } 
+
+    function colicion(x,y){
+      var x2= x,y2=y;
+      if((x2<(personajeX+ancho1))&((x2+ancho2)>personajeX)){
+        if(((y2+alto2)>personajeY)&(y2<(personajeY+alto1))){
+          personajeX=380,personajeY=410,vidas=vidas-1;
+        }
+      }
+    }
+
 }
 
 function vida(){
-  var i;
-  var d=760;
+  var d=750;
   for(i=0;i<vidas;i++){
     papel.drawImage(corazon,d,0,40,40);
     d=d-40;
@@ -195,14 +207,7 @@ function vida(){
     boton.disabled=false;
   }
 }
-function colicion(x,y){
-  var x2= x,y2=y;
-  if((x2<(personajeX+ancho1))&((x2+ancho2)>personajeX)){
-    if(((y2+alto2)>personajeY)&(y2<(personajeY+alto1))){
-      personajeX=380,personajeY=410,vidas=vidas-1;
-    }
-  }
-}
+
 
 function ganar(x,y){  
   var x2= x,y2=y;
@@ -224,11 +229,11 @@ function ganart(x,y){
 }
 
 function random(){
-return Math.floor(Math.random() * (6 - 1 + 1) + 1);
+  return Math.floor(Math.random() * (6 - 1 + 1) + 1);
 }
 
 function valor(){
-  reto=random();
+  reto=5;
   switch(reto){
     case 1:
       teclas.UP,
@@ -237,34 +242,34 @@ function valor(){
       teclas.LEFT=teclas.A
     break;
     case 2:
-        teclas.UP=teclas.W,
-        teclas.DOWN,
-        teclas.RIGHT=teclas.D,
-        teclas.LEFT
+      teclas.UP=teclas.W,
+      teclas.DOWN,
+      teclas.RIGHT=teclas.D,
+      teclas.LEFT
     break;
     case 3:
-        teclas.UP=teclas.W,
-        teclas.DOWN=teclas.S,
-        teclas.RIGHT,
-        teclas.LEFT
+      teclas.UP=teclas.W,
+      teclas.DOWN=teclas.S,
+      teclas.RIGHT,
+      teclas.LEFT
     break;
     case 4:
-        teclas.UP,
-        teclas.DOWN,
-        teclas.RIGHT=teclas.D,
-        teclas.LEFT=teclas.A
+      teclas.UP,
+      teclas.DOWN,
+      teclas.RIGHT=teclas.D,
+      teclas.LEFT=teclas.A
     break;
     case 5:
-        teclas.UP,
-        teclas.DOWN,
-        teclas.RIGHT,
-        teclas.LEFT
-        break;
+      teclas.UP,
+      teclas.DOWN,
+      teclas.RIGHT,
+      teclas.LEFT
+    break;
     case 6:
-        teclas.UP=teclas.W,
-        teclas.DOWN=teclas.S,
-        teclas.RIGHT=teclas.D,
-        teclas.LEFT=teclas.A
+      teclas.UP=teclas.W,
+      teclas.DOWN=teclas.S,
+      teclas.RIGHT=teclas.D,
+      teclas.LEFT=teclas.A
     break;
   }
 }
@@ -273,16 +278,16 @@ document.onkeydown=function(event){
   tecla=event.keyCode;
   switch (tecla) {
     case teclas.DOWN:
-        personajeY=personajeY+10;
-        indiceY=0;
+      personajeY=personajeY+10;
+      indiceY=0;
     break;
     case teclas.LEFT:
-       personajeX=personajeX-10;
-       indiceY=1;
+      personajeX=personajeX-10;
+      indiceY=1;
     break;
     case teclas.UP:
-       personajeY=personajeY-10;
-       indiceY=3;
+      personajeY=personajeY-10;
+      indiceY=3;
     break;
     case teclas.RIGHT:
       personajeX=personajeX+10;
@@ -294,46 +299,86 @@ document.onkeydown=function(event){
 
 function dibujarReglas(){
   if(tecla==0){
-    return papel.fillText("para ir abajo oprima la letra "+dTecla(teclas.DOWN),90,90);
+    papel.fillText(`para ir abajo oprima la tecla `,90,120);
+    dTecla(teclas.DOWN,500,90)
   }
   else if(tecla==teclas.DOWN){
-    return papel.fillText("para ir arriba oprima la letra "+dTecla(teclas.UP),90,90);
+    papel.fillText("para ir arriba oprima la tecla ",90,120);
+    dTecla(teclas.UP,500,90);
   }
   else if(tecla==teclas.UP){
-    return papel.fillText("para ir derecha oprima la letra "+dTecla(teclas.RIGHT),90,90);
+    papel.fillText("para ir derecha oprima la tecla ",90,120);
+    dTecla(teclas.RIGHT,530,90)
   }
   else if(tecla==teclas.RIGHT){
-    return papel.fillText("para ir izquierda oprima la letra "+dTecla(teclas.LEFT),90,90);
+    papel.fillText("para ir izquierda oprima la tecla ",90,120);
+    dTecla(teclas.LEFT,550,90)
   }
   else{
     tecla=0;
   }
 }
-function dTecla(T){
+function dTecla(T,x,y){
   if(T==39){
-    return papel.drawImage(fDerecha,510,60,50,50);
+    papel.drawImage(fDerecha,x,y,50,50);
   }
   else if(T==37){
-    return papel.drawImage(fIzquierda,520,60,50,50);
+    papel.drawImage(fIzquierda,x,y,50,50);
   }
   else if(T==38){
-    return papel.drawImage(fArriba,500,60,50,50);
+    papel.drawImage(fArriba,x,y,50,50);
   }
   else if(T==40){
-    return papel.drawImage(fAbajo,490,60,50,50);
+    papel.drawImage(fAbajo,x,y,50,50);
   }
   else if(T==65){
-    return papel.drawImage(a,520,60,50,50);
+    papel.drawImage(a,x,y,50,50);
   } else if(T==83){
-    return papel.drawImage(s,490,60,50,50);
+    papel.drawImage(s,x,y,50,50);
   }
   else if(T==68){
-    return papel.drawImage(d,510,60,50,50);
+    papel.drawImage(d,x,y,50,50);
   }
   else if(T==87){
-    return papel.drawImage(w,500,60,50,50);
+    papel.drawImage(w,x,y,50,50);
   }
+
+  return;
 }
+function DibujarMonedas(){
+    if(monedas==0)
+      monedita(640,80)
+    else if(monedas==1)
+      monedita(130,670)
+    else if(monedas==2)
+      monedita(690,680)
+    else if(monedas==3)
+      monedita(120,60)
+    else if(monedas==4)
+      monedita(450,350)
+    else if(monedas==5)
+      monedita(300,350)
+    else if(monedas==6)
+      monedita(380,270)
+    else if(monedas==7)
+      monedita(700,400)
+    else if(monedas==8)
+      monedita(60,360)
+    function monedita(x,y){
+      papel.drawImage(moneda,x,y,50,50)
+      cogerMoneda(x,y)
+    }
+    function cogerMoneda(x,y){
+      var x2= x,y2=y;
+      if((x2<(personajeX+ancho1))&((x2+ancho2)>personajeX)){
+        if(((y2+alto2)>personajeY)&(y2<(personajeY+alto1))){
+          monedas++;
+          document.getElementById("monedas").innerHTML=`numero de monedas: ${monedas}`
+        }
+      }
+    }
+}
+
 
 function tutorial(){
   personaje.cargaOk=true;
@@ -345,7 +390,7 @@ function tutorial(){
   }
   papel.drawImage(personaje.objeto,indiceX*48,indiceY*48,48,48,personajeX,personajeY,48,48);
   indiceX=indiceX+1;
-  papel.font='italic bold 18pt Time New Roma';
+  papel.font='italic bold 25pt Time New Roma';
   dibujarReglas();
   if(indiceX>2){
     indiceX=0;
@@ -359,9 +404,8 @@ function tutorial(){
 
 function dibujarjuego(){
   personaje.cargaOk=true;
-  boton.disabled=true;
   cargarFondo();
-
+  boton.disabled=true
   papel.drawImage(personaje.objeto,indiceX*48,indiceY*48,48,48,personajeX,personajeY,48,48);
   indiceX=indiceX+1;
   if(indiceX>2)
@@ -369,29 +413,32 @@ function dibujarjuego(){
   limites();
   if(ganaste<=2){
     dibujarobstaculos();
-  indice_enemigoX=indice_enemigoX+1
-  if(indiceX<1)
-    indice_enemigoX=0;
-  vida();
-  if(vidas!=0)
-  ganar(700,700);
-}
+    indice_enemigoX=indice_enemigoX+1
+    if(indiceX<1)
+      indice_enemigoX=0;
+    vida();
+    DibujarMonedas();
+    if(vidas!=0){
+      if(monedas==9){
+        ganar(700,700);
+      }
+    }
+  }
   if(fin){
-  setTimeout("dibujarjuego();",100);
-  }
-
+    setTimeout("dibujarjuego();",100);
+  }
 }
 
 function reiniciar(){
   if(vidas==0){
-  reinicio++;
-  vidas=3;
-  personajeX=380;
-  personajeY=410;
-  fin=true;
-  dibujarjuego();
+    reinicio++;
+    vidas=3;
+    personajeX=380;
+    personajeY=410;
+    fin=true;
+    dibujarjuego();
   }
   else{
-    window.location.href="file:///C:/Users/ACER/Desktop/tys/level%202/consentracion.html"
+    window.location.href="file:///D:/Tys/level%202/consentracion.html"
   }
 }
