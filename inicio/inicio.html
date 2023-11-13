@@ -34,22 +34,20 @@
     </table></center>
 
 <br>
-    <form action="basededatos.php" method="get">
+    <form id="formulario">
     <center>
         <p class="ini">¡Empecemos!</p>
         <p class="ini">Digita tus datos</p>
         <p>recuerda que tu nombre de usuario es</p>
         <p>con el que te llamaremos en el juego</p>
-        <input type="text" placeholder="NOMBRE DE USUARIO" required class="field"> 
-        <input type="text" placeholder="NOMBRE" required class="field"> 
-        <input type="number" placeholder="EDAD" required min="1" class="field">
-        <p>selecciona tu genero</p>
-        <input type="checkbox"> femenino 
-        <input type="checkbox"> masculino 
+        <input id="nickname" type="text" placeholder="NOMBRE DE USUARIO"  class="field" required> 
+        <input id="nombre" type="text" placeholder="NOMBRE"  class="field"required> 
+        <P>FECHA DE NACIMIENTO</P>
+        <input id="fecha" type="date" placeholder="FECHA" class="field"required>
         <br>
-        <a href="file:///C:/Users/ACER/Desktop/tys/level%201/villa.html"><button id="listo" type="button" class="boton">A jugar!</button></a>
+        <button type="submit" class="boton">A jugar!</button>
     </center>       
     </form>
-    <script src="index.js"></script>
+    <script src="inicio.js"></script>
 </body>
 </html>

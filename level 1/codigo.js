@@ -88,12 +88,12 @@ fIzquierda.src="imagenes/tecla-izquierda.png";
 
 var fDerecha=new Image;
 fDerecha.src="imagenes/tecla-derecha.png";
-boton=document.getElementById("reiniciar");
+boton=document.getElementById("boton");
 
 
 personaje.objeto = new Image();
 personaje.objeto.src=personaje.url;
-personaje.objeto.addEventListener("load", dibujarjuego());
+personaje.objeto.addEventListener("load", tutorial());
 
 function cargarFondo(){
   imagen.cargaOk= true;
@@ -233,7 +233,7 @@ function random(){
 }
 
 function valor(){
-  reto=5;
+  reto=random();
   switch(reto){
     case 1:
       teclas.UP,
@@ -385,7 +385,7 @@ function tutorial(){
   cargarFondo();
   if(val){
     valor();
-    boton.disabled=true;
+    boton.disabled=false;
     val=false;
   }
   papel.drawImage(personaje.objeto,indiceX*48,indiceY*48,48,48,personajeX,personajeY,48,48);
@@ -405,7 +405,6 @@ function tutorial(){
 function dibujarjuego(){
   personaje.cargaOk=true;
   cargarFondo();
-  boton.disabled=true
   papel.drawImage(personaje.objeto,indiceX*48,indiceY*48,48,48,personajeX,personajeY,48,48);
   indiceX=indiceX+1;
   if(indiceX>2)
@@ -429,7 +428,7 @@ function dibujarjuego(){
   }
 }
 
-function reiniciar(){
+function oprmir(){
   if(vidas==0){
     reinicio++;
     vidas=3;
@@ -439,6 +438,6 @@ function reiniciar(){
     dibujarjuego();
   }
   else{
-    window.location.href="file:///D:/Tys/level%202/consentracion.html"
+    window.location.href="file:///C:/Users/ACER/Desktop/tys/level%202/consentracion.html"
   }
 }
