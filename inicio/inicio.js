@@ -1,4 +1,23 @@
-let mysql=require("mysql");
+const mysql=require("mysql");
+
+let conexion = mysql.createConnection(
+    {
+        host: "localhost",
+        database: "TYS",
+        user: "root",
+        password: ""
+    }
+);
+
+conexion.connect(function(err){
+    if(err){
+        throw err;
+    }
+    else{
+        console.log("exitosa");
+    }
+
+})
 
 const formulario= document.querySelector("#formulario");
 formulario.addEventListener("submit",(e)=>{
@@ -7,3 +26,5 @@ formulario.addEventListener("submit",(e)=>{
     const nombre=document.querySelector("#nombre").value;
     const fechaNacimiento= document.querySelector("#fecha").value;
 });
+
+
