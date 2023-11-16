@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;700&display=swap');
+
+body,html{
+    background:url('fondopuntaje.png    ');
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   font-family: 'poppins';
+   vertical-align: baseline;
+    image-rendering: optimizeQuality;
+   }
+
+   header{
+    background-color:  #114358;
+    padding: 0;
+    font-size: 65px;
+    color: #fff;
+    width: auto;
+    height: auto;
+    font-family: 'ubuntu', sans-serif;
+    font-weight: bold;
+    position: sticky;
+
+   }
+   
+   table{
+    font-weight: bold;
+    width: 50%;
+    height: 300px;  
+    font-family: 'ubuntu', sans-serif;
+    align-items: center;
+    align-content: center;
+    background-color: #276E90;
+    font-size: 50px;
+    text-align:center;
+    margin: 20px auto;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+    padding: 0;
+}
+
+.puntaje{
+    background-color: #F1ECE7;
+    border-radius: 15px;
+    font-weight: normal;
+    color: #000;
+    font-weight: bold;
+}
