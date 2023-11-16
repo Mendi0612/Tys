@@ -438,6 +438,6 @@ function oprmir(){
     dibujarjuego();
   }
   else{
-    window.location.href="file:///C:/Users/ACER/Desktop/tys/level%202/consentracion.html"
+    window.location.href="../level%202/consentracion.html"
   }
 }
