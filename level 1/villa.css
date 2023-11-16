@@ -42,6 +42,7 @@ button{
     border-radius: 6px;
     border-color: transparent;
     font-weight: bold;
+    margin: 15px;
     color: white;
     cursor: pointer;
 }
