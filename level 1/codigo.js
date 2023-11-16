@@ -15,7 +15,9 @@ var fin =true;
 var fint=true
 let reinicio=0;
 let boton;
-let monedas=0;
+let minutos=0,segundos=0;
+let cronometro;
+let monedas=1;
 var imagen ={
   url: "imagenes/map.png",
   cargaOk: false
@@ -204,7 +206,8 @@ function vida(){
   if(vidas==0){
     papel.drawImage(over,0,0,800,800),
     fin=false,
-    boton.disabled=false;
+    boton.disabled=false,
+    clearInterval(cronometro);
   }
 }
 
@@ -217,7 +220,9 @@ function ganar(x,y){
       fin=false,
       papel.drawImage(win,0,0,800,800),
       boton.disabled=false,
-      boton.innerHTML="nex level";
+      boton.innerHTML="nex level",
+      clearInterval(cronometro);
+
 }
 
 function ganart(x,y){  
@@ -225,7 +230,14 @@ function ganart(x,y){
   papel.drawImage(bandera,x2,y2,48,48);
   if((x2<(personajeX+ancho1))&((x2+anchoBandera)>personajeX))
     if(((y2+altoBandera)>personajeY)&(y2<(personajeY+alto1)))
-      fint=false,personajeX=380,personajeY=420,dibujarjuego();
+      fint=false,
+    personajeX=380,
+    personajeY=420,
+    dibujarjuego(),
+    minutos=0,
+    segundos=0,
+    clearInterval(cronometro),
+    document.getElementById("tiempo").innerHTML=`tiempo de juego 0:0`;
 }
 
 function random(){
@@ -352,7 +364,7 @@ function DibujarMonedas(){
       monedita(130,670)
     else if(monedas==2)
       monedita(690,680)
-    else if(monedas==3)
+    /*else if(monedas==3)
       monedita(120,60)
     else if(monedas==4)
       monedita(450,350)
@@ -363,7 +375,7 @@ function DibujarMonedas(){
     else if(monedas==7)
       monedita(700,400)
     else if(monedas==8)
-      monedita(60,360)
+      monedita(60,360)*/
     function monedita(x,y){
       papel.drawImage(moneda,x,y,50,50)
       cogerMoneda(x,y)
@@ -384,8 +396,9 @@ function tutorial(){
   personaje.cargaOk=true;
   cargarFondo();
   if(val){
+    tiempo();
     valor();
-    boton.disabled=false;
+    boton.disabled=true;
     val=false;
   }
   papel.drawImage(personaje.objeto,indiceX*48,indiceY*48,48,48,personajeX,personajeY,48,48);
@@ -400,6 +413,9 @@ function tutorial(){
   if(fint){
   setTimeout("tutorial();",100);
   }
+  else{
+  val=true;
+  }
 }
 
 function dibujarjuego(){
@@ -410,15 +426,19 @@ function dibujarjuego(){
   if(indiceX>2)
       indiceX=0;
   limites();
+  if(val){
+    tiempo();
+    val=false
+  }
   if(ganaste<=2){
-    dibujarobstaculos();
+    dibujarobstaculos(),
+    DibujarMonedas();
     indice_enemigoX=indice_enemigoX+1
     if(indiceX<1)
       indice_enemigoX=0;
     vida();
-    DibujarMonedas();
     if(vidas!=0){
-      if(monedas==9){
+      if(monedas==3){
         ganar(700,700);
       }
     }
@@ -431,13 +451,34 @@ function dibujarjuego(){
 function oprmir(){
   if(vidas==0){
     reinicio++;
+    boton.disabled=true;
     vidas=3;
     personajeX=380;
     personajeY=410;
     fin=true;
+    monedas=0;
+    segundos=0;
+    minutos=0;
+    document.getElementById("tiempo").innerHTML=`tiempo de juego 0:0`;
+    document.getElementById("monedas").innerHTML=`numero de monedas: 0`
+    val=true;
     dibujarjuego();
   }
   else{
     window.location.href="../level%202/consentracion.html"
   }
+}
+
+function tiempo(){
+  cronometro=setInterval(()=>{
+    segundos++;
+    if(segundos==60){
+        segundos=0;
+        minutos++
+      }
+      else if(minutos>=60){
+        minutos=0;
+      }
+    document.getElementById("tiempo").innerHTML=`tiempo de juego ${minutos}:${segundos}`;
+  },1000);
 }

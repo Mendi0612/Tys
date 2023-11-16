@@ -5,7 +5,7 @@ let Targeta1=null,Targeta2=null;
 let Primeresul=null,Segunresul=null;
 let minutos=0,segundos=0;
 let numeros=[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8]
-//numeros=numeros.sort(()=>{return Math.random()-0.5})
+numeros=numeros.sort(()=>{return Math.random()-0.5})
 let temporizador=false,tiempo=null;
 let inicio=false;
 let nexLevel=null;

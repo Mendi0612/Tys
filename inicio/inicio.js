@@ -8,5 +8,6 @@ formulario.addEventListener("submit",(e)=>{
     console.log(apodo,nombre,fechaNacimiento);
 });
 
-
-alert("hola");
+function cs(){
+    window.location.href="file:///C:/Users/ACER/Desktop/tys/level%201/villa.html";
+}
