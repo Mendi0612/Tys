@@ -465,7 +465,7 @@ function oprmir(){
     dibujarjuego();
   }
   else{
-    window.location.href="../level%202/consentracion.html"
+    window.location.href="../level2/consentracion.html"
   }
 }
 

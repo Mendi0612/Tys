@@ -6,8 +6,5 @@ formulario.addEventListener("submit",(e)=>{
     const nombre=document.querySelector("#nombre").value;
     const fechaNacimiento= document.querySelector("#fecha").value;
     console.log(apodo,nombre,fechaNacimiento);
+    window.location.href="level1/villa.html";
 });
-
-function cs(){
-    window.location.href="file:///C:/Users/ACER/Desktop/tys/level%201/villa.html";
-}
