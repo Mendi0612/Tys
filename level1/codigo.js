@@ -364,7 +364,7 @@ function DibujarMonedas(){
       monedita(130,670)
     else if(monedas==2)
       monedita(690,680)
-    /*else if(monedas==3)
+    else if(monedas==3)
       monedita(120,60)
     else if(monedas==4)
       monedita(450,350)
@@ -375,7 +375,7 @@ function DibujarMonedas(){
     else if(monedas==7)
       monedita(700,400)
     else if(monedas==8)
-      monedita(60,360)*/
+      monedita(60,360)
     function monedita(x,y){
       papel.drawImage(moneda,x,y,50,50)
       cogerMoneda(x,y)
